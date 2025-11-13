@@ -1,0 +1,30 @@
+{
+  "name": "clase-05",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon --ignore data/ server.js",
+    "doc": "node swagger.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
+    "nodemailer": "^7.0.10",
+    "swagger-ui-express": "^5.0.1",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.10",
+    "swagger-autogen": "^2.23.7"
+  }
+}

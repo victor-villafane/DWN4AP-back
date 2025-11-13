@@ -1,0 +1,250 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Api personajes y productos",
+    "description": "Esta es una api de pruebas",
+    "version": "1.0.0"
+  },
+  "host": "localhost:2025",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/personajes": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "species": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "house": {
+                  "example": "any"
+                },
+                "wizard": {
+                  "example": "any"
+                },
+                "ancestry": {
+                  "example": "any"
+                },
+                "eyeColour": {
+                  "example": "any"
+                },
+                "hairColour": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/personajes/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "species",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "house",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "wizard",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ancestry",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "eyeColour",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hairColour",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/{idPersonaje}/zapatilla": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "idPersonaje",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "marca": {
+                  "example": "any"
+                },
+                "modelo": {
+                  "example": "any"
+                },
+                "precio": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "idPersonaje",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
