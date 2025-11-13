@@ -29,6 +29,10 @@ app.use("/api/personajes", PersonajesApiRouter)
 app.use("/api/usuarios", UsuariosApiRouter)
 //https://vercel.com/docs/frameworks/backend/express
 
+app.get("/health", (_, res) => {
+    res.json({message: "ok"})
+} )
+
 const port = process.env.PORT || 2025
 
 app.listen(2025, () => {
