@@ -28,6 +28,9 @@ app.use("/personajes", PersonajesRouter)
 app.use("/api/personajes", PersonajesApiRouter)
 app.use("/api/usuarios", UsuariosApiRouter)
 //https://vercel.com/docs/frameworks/backend/express
+
+const port = process.env.PORT || 2025
+
 app.listen(2025, () => {
-    console.log("Funcionando en el puerto 2025")
+    console.log("Funcionando en el puerto " + port)
 })
