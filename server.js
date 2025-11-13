@@ -15,7 +15,7 @@ const corsOptions = {   //NO ES EL MISMO QUE VAN A TENER EN SOCKETS!
     methods: "GET, POST, PUT, PATCH, DELETE"
 }
 
-app.use(cors(corsOptions)) //IMPORTANTE!!! Y REINICIAR
+app.use(cors({origin: true})) //IMPORTANTE!!! Y REINICIAR
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
