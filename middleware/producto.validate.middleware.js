@@ -1,7 +1,7 @@
 import { productoSchema } from "../schemas/producto.js"
 
 export function validateProducto(req, res, next){
-    console.log("Validando....")
+    console.log("Validando....", req.body)
     productoSchema.validate(req.body, 
             { 
                 abortEarly:false,       //se detiene en el primer error 
