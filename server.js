@@ -10,6 +10,8 @@ import multer from "multer"
 
 import cors from 'cors'
 import sharp from "sharp"
+import { Server } from "socket.io"
+import http from "http"
 
 const app = express()
 
@@ -72,6 +74,54 @@ app.post("/api/upload", [upload.single("file"), resizeImage], (req, res) => {
 
 const port = process.env.PORT || 2025
 
-app.listen(2025, () => {
-    console.log("Funcionando en el puerto " + port)
-})
+const server = http.createServer(app)
+
+const io = new Server(server, {
+    cors: {
+        origin: "*"
+    }
+});
+
+// app.listen(2025, () => {
+//     console.log("Funcionando en el puerto " + port)
+// })
+
+const jugadores = {}
+
+function estadoJuego(){
+    io.emit("estado", {
+        jugadores
+    })
+}
+
+io.on( "connection", (socket) => {
+    console.log("Conexion recibida!!!", socket.id)
+    // socket.on( "message", (data) => {
+    //     console.log(data)
+    // } )
+    socket.on("unirme", ({nombre}) => {
+        jugadores[socket.id] = {
+            nombre: nombre,
+            puntos: 0
+        }
+        console.log("Jugador: " + nombre + " Se unio al juego!")
+        estadoJuego()
+    })
+
+    socket.on("sumar-puntos", () => {
+        const jugador = jugadores[socket.id]
+        if( !jugador ) return
+        jugador.puntos++
+        estadoJuego()
+    })
+
+    socket.on( "disconnect", () => {
+        const jugador = jugadores[socket.id]
+        if(jugador){
+            delete jugadores[socket.id]
+            estadoJuego()
+        }
+    } )
+} )
+
+server.listen( port, () => console.log(`Servidor escuchando en http://localhost:${port}`) )
